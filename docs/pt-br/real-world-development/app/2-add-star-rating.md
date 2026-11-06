@@ -1,57 +1,57 @@
 ---
-title: "Lição 2 - Adicionar avaliações por estrelas: uma melhoria rápida"
-description: "Inicie sua primeira sessão de agente no aplicativo GitHub Copilot, faça uma pequena alteração nos cards dos jogos e integre-a como seu primeiro pull request."
+title: "Lição 2 - Adicionar avaliações por estrelas: uma vitória rápida"
+description: "Inicie sua primeira sessão de agente no aplicativo GitHub Copilot, faça uma pequena alteração nos cartões dos jogos e mescle-a como seu primeiro pull request."
 authors:
   - geektrainer
-lastUpdated: 2026-07-09
+lastUpdated: 2026-10-22
 ---
 
-Na lição anterior, você conheceu o espaço de trabalho e usou um chat rápido. Agora é hora de iniciar uma **sessão de agente** e fazer sua primeira alteração no projeto. A mudança será pequena: os dados dos jogos já têm uma avaliação por estrelas, mas os cards dos jogos na página inicial ainda não a exibem. Você pedirá ao agente que mostre essa avaliação, revisará a alteração e fará o merge dela como seu primeiro pull request.
+Agora que você explorou o espaço de trabalho e usou um chat rápido, inicie uma **sessão de agente** para fazer sua primeira alteração no projeto. Ela será pequena: os dados dos jogos já têm uma avaliação por estrelas, mas os cartões da página inicial ainda não a mostram. Peça ao agente que a exiba, revise a alteração e mescle-a como seu primeiro pull request.
 
 Nesta lição, você vai:
 
-- iniciar uma sessão de agente e aprender como ela é estruturada.
-- pedir ao agente que faça uma alteração pequena e específica no projeto.
-- revisar a alteração na visualização de diff do espaço de trabalho.
-- executar o aplicativo localmente para confirmar a alteração no navegador.
-- abrir e fazer merge do seu primeiro pull request.
+- iniciar uma sessão de agente e conhecer sua estrutura.
+- pedir ao agente que faça uma pequena alteração focada no projeto.
+- revisar a alteração na visualização de diferenças do espaço de trabalho.
+- executar o aplicativo localmente e confirmar a alteração no navegador.
+- abrir e mesclar seu primeiro pull request.
 
 ## Cenário
 
-Cada jogo no Tailspin Toys pode ter uma avaliação por estrelas, que já aparece na página de detalhes do jogo. No entanto, os cards dos jogos na página inicial mostram apenas título, categoria, distribuidora e descrição. Como aquecimento, você fará com que o agente exiba em cada card a avaliação existente. Essa alteração pequena e independente é perfeita para sua primeira sessão.
+Cada jogo no Tailspin Toys pode ter uma avaliação por estrelas, que já aparece na página de detalhes. Os cartões da página inicial, porém, mostram apenas o título, a categoria, a editora e a descrição. Como aquecimento, peça ao agente para exibir a avaliação existente em cada cartão: uma alteração pequena e independente, ideal para sua primeira sessão.
 
-## Anatomia de uma sessão
+## Estrutura de uma sessão
 
-Uma **sessão** é uma conversa com um agente executada em seu próprio espaço de trabalho isolado. Cada sessão recebe um **git worktree e uma branch dedicados**, o que permite executar várias sessões ao mesmo tempo, uma adicionando um recurso e outra corrigindo um bug, sem que as alterações entrem em conflito. Suas sessões aparecem na barra lateral agrupadas por repositório. Selecione qualquer uma delas para acessá-la.
+Uma **sessão** é uma conversa com um agente executada em um espaço de trabalho isolado. Cada sessão tem seu próprio **git worktree e branch**, o que permite trabalhar com várias sessões ao mesmo tempo — uma para adicionar um recurso e outra para corrigir um bug — sem que as alterações entrem em conflito. As sessões aparecem na barra lateral, agrupadas por repositório. Selecione uma sessão para alternar para ela.
 
-Em uma sessão, você verá três elementos: a **conversa** com o agente, a **atividade de ferramentas** do agente enquanto ele explora e edita arquivos e a lista de **arquivos alterados** com os respectivos diffs.
+Em uma sessão, você verá a **conversa** com o agente, a **atividade das ferramentas** enquanto ele explora e edita arquivos e a lista de **arquivos alterados** com suas diferenças.
 
 ## Iniciar uma sessão e solicitar a alteração
 
-Vamos iniciar uma nova sessão para começar a explorar o projeto e implementar o recurso. Em uma [lição anterior][prior-lesson], você adicionou o projeto por meio do repositório do GitHub. Criaremos uma nova sessão para esse repositório e solicitaremos a alteração.
+Inicie uma sessão para explorar o projeto e implementar o recurso. Durante a [configuração do aplicativo][prior-lesson], você adicionou o projeto pelo repositório do GitHub. Agora, crie uma sessão para esse repositório e solicite a alteração.
 
 1. Volte ao aplicativo GitHub Copilot ou abra-o.
-2. Selecione **+** ao lado de **Projects**.
+2. Na parte superior da barra lateral, selecione **+** para iniciar uma sessão.
 3. Selecione `tailspin-toys` como repositório.
-4. Escolha **new working tree** e o modo **Interactive** abaixo da caixa de prompt. Use o prompt a seguir para solicitar a alteração:
+4. Escolha uma **new working tree** e o modo **Interactive** abaixo da caixa de prompt. Use este prompt:
 
-    ```plaintext
-    Show each game's starRating out of 5 in the game cards on the list page. If the rating is null, show "No rating yet". Keep the card layout as it is, add tests, and run the relevant checks.
-    ```
+   ```plaintext
+   Show each game's starRating out of 5 in the game cards on the list page. If the rating is null, show "No rating yet". Keep the card layout as it is, add tests, and run the relevant checks.
+   ```
 
-5. Pressione <kbd>Enter</kbd> para enviar o prompt ao Copilot.
+5. Pressione <kbd>Enter</kbd> para enviar o prompt.
 
-O aplicativo Copilot começa criando um novo worktree, uma cópia isolada do projeto. Em seguida, ele explora o projeto, localiza os arquivos que precisam ser atualizados e cria o código necessário para adicionar o novo recurso. Você acabou de adicionar um recurso com o aplicativo Copilot.
+O aplicativo Copilot começa criando um worktree, uma cópia isolada do projeto. Em seguida, explora o projeto, localiza os arquivos necessários e cria o código do recurso.
 
-## Revisar o diff
+## Revisar as diferenças
 
-Todas as alterações geradas por IA devem ser revisadas antes do merge, mesmo as pequenas. Vamos explorar as alterações diretamente no aplicativo Copilot.
+Revise todas as alterações geradas por IA antes de mesclá-las, mesmo quando forem pequenas.
 
-1. No canto superior direito do aplicativo, selecione **Toggle review panel**. A tela de diff será aberta com todas as alterações pendentes feitas pelo Copilot.
+1. No canto superior direito do aplicativo, selecione **Toggle review panel**. No painel que abrir, selecione **Changes** para ver os arquivos alterados e suas diferenças.
 
-    ![Barra de ferramentas superior do aplicativo GitHub Copilot com uma seta apontando para o botão Toggle review panel à direita de Create PR](../../../_images/app-2-review-panel.png)
+   ![Barra de ferramentas superior do aplicativo GitHub Copilot com uma seta apontando para o botão Toggle review panel, à direita de Create PR](../../../_images/app-2-review-panel.png)
 
-2. Você verá código adicionado a `GameCard.astro`, o arquivo principal usado para exibir os detalhes do jogo. Ele deve ser semelhante ao exemplo a seguir: um pequeno bloco que renderiza a avaliação quando ela existe e usa "No rating yet" quando `starRating` é `null`:
+2. Confirme se `GameCard.astro`, o arquivo principal que exibe os detalhes do jogo, contém código semelhante ao exemplo a seguir: um bloco que mostra a avaliação quando disponível e usa `No rating yet` quando `starRating` é `null`.
 
    ```astro
    {game.starRating !== null ? (
@@ -66,53 +66,54 @@ Todas as alterações geradas por IA devem ser revisadas antes do merge, mesmo a
    ```
 
 > [!NOTE]
-> Como o Copilot, assim como todas as ferramentas de IA generativa, é probabilístico, e não determinístico, o código exato pode ser diferente do exemplo. No entanto, ele deve ser relativamente semelhante.
+> Como todas as ferramentas de IA generativa, o Copilot é probabilístico, não determinístico. O código exato pode variar, mas deve ser relativamente semelhante.
 
 ## Verificar as alterações
 
-Revise os resultados das verificações automatizadas do agente antes de abrir um navegador. Confirme que os testes cobrem um `starRating` numérico e a alternativa para `null`. Um pré-requisito ausente ou uma verificação ignorada não conta como aprovação; revise qualquer solicitação de instalação antes de aprová-la.
+Revise os resultados das verificações automatizadas antes de abrir o navegador. Confirme que os testes cobrem um valor numérico de `starRating` e a alternativa para `null`. Um pré-requisito ausente ou uma verificação ignorada não conta como aprovação; revise qualquer solicitação de instalação antes de autorizá-la.
 
-É claro que não devemos apenas ler o código e presumir que funciona. Vamos pedir ao Copilot que abra o site para examinarmos a interface atualizada. Para isso, podemos pedir que ele inicie o site e o abra em um canvas de navegador.
+Peça ao Copilot para iniciar o site e abri-lo em um canvas de navegador para que você examine a interface do usuário (UI) atualizada.
 
 > [!TIP]
-> Um canvas é um widget interativo disponível dentro do próprio aplicativo Copilot. Você explorará opções personalizadas e até criará seu próprio canvas mais adiante, mas, por enquanto, usaremos o canvas de navegador integrado.
+> Um canvas é um widget interativo disponível dentro do aplicativo Copilot. Mais adiante, você explorará canvases personalizados e criará um; por enquanto, use o canvas de navegador integrado.
 
-1. Use o prompt a seguir para pedir ao Copilot que inicie o aplicativo e abra a página no canvas de navegador:
+1. Use este prompt para pedir ao Copilot que inicie o aplicativo e abra a página no canvas:
 
-    ```plaintext
-    Start the app and open it in the browser canvas.
-    ```
+   ```plaintext
+   Start the app and open it in the browser canvas.
+   ```
 
-2. Em alguns instantes, o aplicativo será iniciado e uma janela do navegador será aberta dentro do aplicativo Copilot.
-3. Confirme se os cards de jogos avaliados exibem a nota de um total de cinco.
-4. Quando terminar, use o prompt a seguir para pedir ao Copilot que interrompa o servidor de desenvolvimento iniciado para esta sessão:
+2. Aguarde o início do aplicativo e a abertura de uma janela do navegador dentro do Copilot.
+3. Confirme que os cartões avaliados mostram a nota em uma escala de cinco.
+4. Quando terminar, peça ao Copilot que pare o servidor de desenvolvimento e feche o canvas:
 
-    ```plaintext
-    Stop the dev server and close the browser canvas.
-    ```
+   ```plaintext
+   Stop the dev server and close the browser canvas.
+   ```
 
-## Abrir e fazer merge do primeiro pull request
+## Abrir e mesclar seu primeiro pull request
 
-Você criou o recurso! Agora é hora de criar um pull request (PR) para fazer o merge do novo código na base de código existente.
+Agora que você criou o recurso, abra um pull request (PR) para integrá-lo à base de código existente.
 
-1. Selecione **Create PR** no canto superior direito.
-2. Se solicitado, selecione **Sign in with your browser** e siga as instruções para se autenticar.
-3. O Copilot começará a criar o PR.
-4. Selecione o indicador **PR** logo acima do chat para abrir o PR no painel de revisão e visualizá-lo. Faça as revisões necessárias nesse painel.
-5. Quando estiver tudo pronto, selecione **Ready to merge**.
-6. Na nova caixa de diálogo, selecione **Merge pull request** para fazer o merge do pull request.
+1. No canto superior direito, selecione **Create PR**.
+2. Se solicitado, selecione **Sign in with your browser** e siga as instruções para autenticar sua conta.
+3. Se o Copilot explicar que a política do repositório exige uma issue correspondente antes da criação do PR, confirme que ele deve seguir esse processo.
+4. Aguarde o Copilot criar o PR.
+5. Selecione o indicador **PR** acima do chat para abrir o pull request no painel de revisão e examiná-lo.
+6. Quando estiver tudo pronto, selecione **Ready to merge**.
+7. Na nova janela, selecione **Merge pull request** para mesclar o PR.
 
 ## Resumo e próximos passos
 
-Você iniciou sua primeira sessão de agente e entregou sua primeira alteração. Especificamente, você:
+Parabéns! Você entregou sua primeira alteração usando o aplicativo GitHub Copilot. Nesta lição, você:
 
-- iniciou uma sessão de agente e aprendeu como as sessões são estruturadas.
-- orientou o agente a fazer uma alteração pequena e específica nos cards dos jogos.
-- revisou a alteração na visualização de diff do espaço de trabalho.
-- executou o aplicativo localmente para confirmar a avaliação por estrelas no navegador.
-- abriu o PR 1, revisou as verificações e fez o merge explicitamente.
+- iniciou uma sessão de agente e conheceu sua estrutura.
+- orientou o agente a fazer uma alteração pequena e focada nos cartões dos jogos.
+- revisou a alteração na visualização de diferenças do espaço de trabalho.
+- executou o aplicativo localmente e confirmou a avaliação por estrelas no navegador.
+- abriu o PR 1, revisou as verificações e fez a mesclagem explicitamente.
 
-Em seguida, você [começará pela issue de filtragem e usará os modos Plan e Autopilot][next-lesson] para criar um recurso maior.
+Em seguida, você [começará pela issue de filtragem e usará os modos Plan e Autopilot][next-lesson] para desenvolver um recurso maior.
 
 ## Recursos
 

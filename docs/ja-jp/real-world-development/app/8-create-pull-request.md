@@ -33,8 +33,8 @@ lastUpdated: 2026-09-17
 
 1. エージェントピッカーで **Default agent** を選択します。
 2. **Create PR** の横にあるドロップダウンを選択します。
-3. **Agent merge** を選択します。ボタンが **Agent merge** に変わります。
-4. **Agent merge** を選択し、Agent Merge のプロセスを開始します。
+3. **Agent Merge** を選択します。ボタンが **Agent Merge** に変わります。
+4. **Agent Merge** ボタンを選択してプロセスを開始します。ドロップダウン項目を選択しただけでは開始されません。
 
 Agent Merge のプロセスが開始され、次の処理を行います。
 
@@ -45,10 +45,18 @@ Agent Merge のプロセスが開始され、次の処理を行います。
 - 他の開発者または Copilot code review からのフィードバックがないか PR を監視し、コメントを解決するために更新します。
 - 必要に応じて、すべてが成功した後に PR を自動的にマージできます。
 
-すべてが成功したら Agent Merge が PR もマージするように設定します。
+マージの許可を与える前に、PR と検証の証拠をレビューします。すべてのチェックと承認が成功してから Agent Merge にマージを依頼します。
 
-5. **Agent merge** の横にあるドロップダウンを選択します。
-6. **Merge pull request** の横にチェックが付いていることを確認します。
+5. マージを許可する前に、PR の差分と検証の証拠をレビューします。
+6. **Agent Merge** の横にあるドロップダウンを選択します。
+7. **Merge pull request** の横にチェックが付いていることを確認します。
+8. エージェントに明示的にマージを依頼します。
+
+    ```plaintext
+    Merge the PR once all required checks and approvals pass. Do not bypass repository protections.
+    ```
+
+9. 進捗を確認し、報告された阻害要因に対処します。続行前に、エージェントが動作中またはマージ権限が有効というだけでなく、PR の状態が **Merged** であることを確認します。
 
 > [!IMPORTANT]
 > Agent Merge は、リポジトリの保護や権限不足を回避しません。続行前にそれらの阻害要因を解消してください。
